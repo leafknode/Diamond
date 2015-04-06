@@ -37,9 +37,8 @@ class ConnTrackCollector(diamond.collector.Collector):
         config = super(ConnTrackCollector, self).get_default_config()
         config.update({
             "path":  "conntrack",
-            "dir":   "/host_proc/sys/net/ipv4/netfilter,/host_proc/sys/net/netfilter",
-            "files": "ip_conntrack_count,ip_conntrack_max,"
-                     "nf_conntrack_count,nf_conntrack_max",
+            "dir":   "/host_proc/sys/net/netfilter",
+            "files": "nf_conntrack_count,nf_conntrack_max"
         })
         return config
 
@@ -63,9 +62,9 @@ class ConnTrackCollector(diamond.collector.Collector):
         for sdir in dirs:
             for sfile in files:
                 if sfile.endswith('conntrack_count'):
-                    metric_name = 'ip_conntrack_count'
+                    metric_name = 'conntrack_count'
                 elif sfile.endswith('conntrack_max'):
-                    metric_name = 'ip_conntrack_max'
+                    metric_name = 'conntrack_max'
                 else:
                     self.log.error('Unknown file for collection: %s', sfile)
                     continue
