@@ -1,11 +1,11 @@
 # coding=utf-8
 
 """
-Uses /proc/vmstat to collect data on virtual memory manager
+Uses /host_proc/vmstat to collect data on virtual memory manager
 
 #### Dependencies
 
- * /proc/vmstat
+ * /host_proc/vmstat
 
 """
 
@@ -16,7 +16,7 @@ import re
 
 class VMStatCollector(diamond.collector.Collector):
 
-    PROC = '/proc/vmstat'
+    PROC = '/host_proc/vmstat'
     MAX_VALUES = {
         'pgpgin': diamond.collector.MAX_COUNTER,
         'pgpgout': diamond.collector.MAX_COUNTER,

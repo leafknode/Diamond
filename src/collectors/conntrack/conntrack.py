@@ -37,7 +37,7 @@ class ConnTrackCollector(diamond.collector.Collector):
         config = super(ConnTrackCollector, self).get_default_config()
         config.update({
             "path":  "conntrack",
-            "dir":   "/proc/sys/net/ipv4/netfilter,/proc/sys/net/netfilter",
+            "dir":   "/host_proc/sys/net/ipv4/netfilter,/host_proc/sys/net/netfilter",
             "files": "ip_conntrack_count,ip_conntrack_max,"
                      "nf_conntrack_count,nf_conntrack_max",
         })
